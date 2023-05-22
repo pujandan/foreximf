@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "foreximf" "\0"
+            VALUE "CompanyName", "PujanDan" "\0"
+            VALUE "FileDescription", "FOREXimf" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "foreximf" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "foreximf.exe" "\0"
-            VALUE "ProductName", "foreximf" "\0"
+            VALUE "InternalName", "FOREXimf" "\0"
+            VALUE "LegalCopyright", "Copyright ©️ 2022 PujanDan. All rights reserved." "\0"
+            VALUE "OriginalFilename", "foreximf-win32.exe" "\0"
+            VALUE "ProductName", "FOREXimf" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

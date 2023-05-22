@@ -1,0 +1,6 @@
+{
+    "labelApp" : "FOREXimf",
+    "errorParsingApi" : "Error parsing response api!",
+    "internalServer" : "Sistem sedang bermasalah silahkan coba beberapa saat lagi.",
+	"apiTimeout" : "Tidak dapat terhubung ke server. Waktu sambungan telah habis!"
+}

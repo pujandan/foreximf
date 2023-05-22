@@ -1,68 +1,44 @@
+import 'dart:async';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:foreximf/core/constants/app_theme.dart';
+import 'package:foreximf/core/routers/router_name.dart';
+import 'package:foreximf/core/translations/translation.dart';
+import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'core/routers/app_router.dart';
+
+void main() async {
+  _initialize().then((value) async {
+    await _run();
+  });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+Future<void> _initialize() async {
+  WidgetsFlutterBinding.ensureInitialized();
+}
+
+Future<void> _run() async {
+  runZonedGuarded(() {
+    runApp(const MainApp());
+  }, FirebaseCrashlytics.instance.recordError);
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      translations: Translation(),
+      locale: const Locale('id', 'ID'),
+      fallbackLocale: const Locale('en', 'US'),
+      title: "labelApp".tr,
+      getPages: appRoutes(),
+      initialRoute: RouterName.taksOne,
+      theme: AppTheme.theme(context),
+      transitionDuration: AppTheme.transitionDuration,
     );
   }
 }
